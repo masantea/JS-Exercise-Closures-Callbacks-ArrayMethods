@@ -1,3 +1,4 @@
+// @ts-nocheck
 // ⭐️ Example Challenge START ⭐️
 
 /**
@@ -48,8 +49,11 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
-  /* CODE HERE */
+function processLength(list, callback) {
+  return callback(list)
+}
+function callback(passedList){
+  return passedList.length
 }
 
 /**
@@ -66,8 +70,9 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
-  /* CODE HERE */
+function processLastItem(stringList, callback) {
+  let lastItem = stringList[stringList.length-1];
+  return callback (lastItem);
 }
 
 /**
@@ -87,8 +92,10 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(numberList, callback) {
+  return callback(numberList.reduce((accum, item) => {
+    return accum + item;
+  }, 0));
 }
 
 /**
@@ -178,8 +185,10 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(runners) {
+  let names = [];
+  runners.forEach(runner => names.push(`$(runner.first_name), $(runner.last_name)`));
+  return names;
 }
 
 /**
@@ -211,8 +220,11 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  let size = runners.filter(function(person){
+    return person.shirt_size === "S" && "M" && "L" && "XL" && "2XL" && "3XL"
+  });
+  return size;
 }
 
 /**
@@ -225,7 +237,7 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
+function tallyUpDonations(runners) {
   /* CODE HERE */
 }
 
@@ -249,7 +261,7 @@ function counterMaker() {
   // BROKEN CODE STARTS
   const count = 0;
   function counter() {
-    ++count
+    ++/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   }
   // BROKEN CODE ENDS
 }
@@ -274,9 +286,16 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function counterMakerWithLimit(maxcount) {
+  let count = -1;
+  return function() {
+    if (count <= maxcount) {
+      return count++;
+    } else {
+      return count = 0;
+    }
+  } 
+};
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
