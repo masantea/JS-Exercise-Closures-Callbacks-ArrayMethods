@@ -261,7 +261,7 @@ function counterMaker() {
   // BROKEN CODE STARTS
   const count = 0;
   function counter() {
-    ++/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ++count
   }
   // BROKEN CODE ENDS
 }
@@ -286,16 +286,17 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(maxcount) {
-  let count = -1;
-  return function() {
-    if (count <= maxcount) {
+function counterMakerWithLimit(limit) {
+  let count=0
+  return function(){
+    if (count < limit) {
       return count++;
     } else {
-      return count = 0;
+      count = 0;
+      return limit++;
     }
-  } 
-};
+  }
+ }
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
