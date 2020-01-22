@@ -50,11 +50,9 @@ function processFirstItem(stringList, callback) {
  * should return "There are 0".
 */
 function processLength(list, callback) {
-  return callback(list)
+  return callback(list.length)
 }
-function callback(passedList){
-  return passedList.length
-}
+
 
 /**
  * ### Challenge `processLastItem`
@@ -116,8 +114,8 @@ function processSum(numberList, callback) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1, num2, callback) {
+  return callback(product(num1* num2))
 }
 
 /**
@@ -140,7 +138,7 @@ function processProduct(/* CODE HERE */) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
+function processContains(item, list, callback) {
   /* CODE HERE */
 }
 
@@ -187,7 +185,7 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
 */
 function getFullNames(runners) {
   let names = [];
-  runners.forEach(runner => names.push(`$(runner.first_name), $(runner.last_name)`));
+  runners.forEach(runner => names.push(`$(runner.last_name), $(runner.first_name)`));
   return names;
 }
 
@@ -203,8 +201,10 @@ function getFullNames(runners) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  let firstNames=[];
+  runners.map((runner)=> runner.first_name.toUpperCase());
+  return firstNames;
 }
 
 /**
