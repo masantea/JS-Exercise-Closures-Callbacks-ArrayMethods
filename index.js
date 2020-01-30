@@ -53,7 +53,6 @@ function processLength(list, callback) {
   return callback(list.length)
 }
 
-
 /**
  * ### Challenge `processLastItem`
  * 
@@ -115,7 +114,8 @@ function processSum(numberList, callback) {
  * should return 1000.
 */
 function processProduct(num1, num2, callback) {
-  return callback(product(num1* num2))
+  
+  return callback(num1* num2)
 }
 
 /**
@@ -139,8 +139,10 @@ function processProduct(num1, num2, callback) {
  * should return "sad".
 */
 function processContains(item, list, callback) {
-  /* CODE HERE */
-}
+  return callback(list.includes(item))
+
+  // return callback(list.some(C => item === C) )
+} 
 
 /**
  * ### Challenge `processDuplicateFree`
@@ -160,10 +162,33 @@ function processContains(item, list, callback) {
  * 
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
+ * 
+ * 
+ * 
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+// function processDuplicateFree(list, callback) {
+
+//   return duplicateFree= list.filter(function(item, double){
+//     return list.indexOf(item)===double;
+//   })
+// }
+
+//const list = [1, 3, 2, 2, 6, 7]
+//list[1] = 3
+
+function processDuplicateFree(list, callback){
+  //create empty array for the new list
+  const newArray = [];
+  list.forEach(number => { 
+    if (!newArray.includes(number)){
+      newArray.push(number)
+    }
+  })
+  return callback(newArray)
 }
+
+
+
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -185,7 +210,7 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
 */
 function getFullNames(runners) {
   let names = [];
-  runners.forEach(runner => names.push(`$(runner.last_name), $(runner.first_name)`));
+  runners.forEach(runner => names.push(`${runner.last_name}, ${runner.first_name}`));
   return names;
 }
 
@@ -202,10 +227,10 @@ function getFullNames(runners) {
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
 function firstNamesAllCaps(runners) {
-  let firstNames=[];
-  runners.map((runner)=> runner.first_name.toUpperCase());
-  return firstNames;
+  //let firstNames=[];
+  return runners.map((runner)=> runner.first_name.toUpperCase());
 }
+
 
 /**
  * ### Challenge `getRunnersByTShirtSize`
@@ -221,10 +246,9 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-  let size = runners.filter(function(person){
-    return person.shirt_size === "S" && "M" && "L" && "XL" && "2XL" && "3XL"
-  });
-  return size;
+  return runners.filter(runner => runner.shirt_size === tShirtSize
+    );
+ 
 }
 
 /**
